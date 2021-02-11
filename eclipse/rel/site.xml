@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.devepos.adt.utilities_1.0.1.jar" id="com.devepos.adt.utilities" version="1.0.1">
+      <category name="ADT Utilities"/>
+   </feature>
+   <feature url="features/com.devepos.adt.searchandanalysistools_1.3.2.jar" id="com.devepos.adt.searchandanalysistools" version="1.3.2">
+      <category name="ABAP Search Tools"/>
+   </feature>
+   <feature url="features/com.devepos.adt.abaptags_1.0.2.jar" id="com.devepos.adt.abaptags" version="1.0.2">
+      <category name="ABAP Tags"/>
+   </feature>
+   <category-def name="ABAP Search Tools" label="ABAP Search Tools">
+      <description>
+         Tools for advanced search and analysis for ABAP Projects
+      </description>
+   </category-def>
+   <category-def name="ADT Utilities" label="ADT Utilities">
+      <description>
+         Plugins which provide useful features during ADT Development
+      </description>
+   </category-def>
+   <category-def name="ABAP Tags" label="ABAP Tags">
+      <description>
+         Plugins for ABAP Tags Management
+      </description>
+   </category-def>
+</site>
