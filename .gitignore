@@ -28,6 +28,7 @@ local.properties
 **/target/
 /bin/
 /output/
+scripts/output/
 
 # VS code
 .vscode
