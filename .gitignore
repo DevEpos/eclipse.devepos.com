@@ -27,6 +27,7 @@ local.properties
 *.launch
 **/target/
 /bin/
+/output/
 
 # VS code
 .vscode
