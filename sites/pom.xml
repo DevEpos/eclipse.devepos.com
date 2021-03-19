@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>dev</module>
+		<module>rel</module>
 	</modules>
 	<profiles>
 		<profile>
