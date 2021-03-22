@@ -2,4 +2,4 @@
 @REM ) -----------------------------------
 @echo off
 
-call build-updatesite Development "%cd%\..\sites\dev"
+call build-updatesite Development "%cd%\..\dev"
