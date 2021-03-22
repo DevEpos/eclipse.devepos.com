@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>dev</module>
-		<module>rel</module>
+		<module>latest</module>
 	</modules>
 	<profiles>
 		<profile>
