@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature id="com.devepos.adt.utilities">
-      <category name="ADT Utilities"/>
+      <category name="DevEpos - ADT Extensions"/>
    </feature>
    <feature id="com.devepos.adt.searchandanalysistools">
-      <category name="ABAP Search Tools"/>
+      <category name="DevEpos - ADT Extensions"/>
    </feature>
    <feature id="com.devepos.adt.abaptags">
-      <category name="ABAP Tags"/>
+      <category name="DevEpos - ADT Extensions"/>
    </feature>
-   <category-def name="ABAP Search Tools" label="ABAP Search Tools">
+   <category-def name="DevEpos - ADT Extensions" label="DevEpos - ADT Extensions">
       <description>
-         Tools for advanced search and analysis for ABAP Projects
-      </description>
-   </category-def>
-   <category-def name="ADT Utilities" label="ADT Utilities">
-      <description>
-         Plugins which provide useful features during ADT Development
-      </description>
-   </category-def>
-   <category-def name="ABAP Tags" label="ABAP Tags">
-      <description>
-         Plugins for ABAP Tags Management
+         Useful additional plugins for ABAP Development Tools
       </description>
    </category-def>
 </site>
