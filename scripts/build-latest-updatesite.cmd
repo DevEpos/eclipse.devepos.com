@@ -2,4 +2,4 @@
 @REM ) -----------------------------------
 @echo off
 
-call build-updatesite Release "%cd%\..\rel"
+call build-updatesite Release "%cd%\..\latest"
