@@ -21,9 +21,6 @@ call :main
 exit /B 0 
 
 :main
-	@REM ) removing the currently installed devepos artifacts
-	rmdir /S/Q %userprofile%\.m2\repository\com\devepos 2>NUL
-	
 	echo [INFO] Starting Building devepos plugins/features
 	echo [INFO] ------------------------------------------
 	echo [INFO] Starting Building devepos plugins/features >> %result_file%
