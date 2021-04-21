@@ -1,4 +1,5 @@
-adt-plugin-dev-tools
+adt-addons-branding
 adt-addons-base
+adt-plugin-dev-tools
 abap-search-tools-ui
 abap-tags-ui
