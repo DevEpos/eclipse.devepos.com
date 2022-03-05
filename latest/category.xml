@@ -9,6 +9,9 @@
    <feature id="com.devepos.adt.pdt">
       <category name="DevEpos - ADT Plugin Development"/>
    </feature>
+   <feature id="com.devepos.adt.codesearch">
+      <category name="DevEpos - ADT Add-Ons"/>
+   </feature>
    <category-def name="DevEpos - ADT Add-Ons" label="DevEpos - ADT Add-Ons">
       <description>
          Useful additional plugins for ABAP Development in eclipse
