@@ -12,6 +12,9 @@
    <feature id="com.devepos.adt.codesearch">
       <category name="DevEpos - ADT Add-Ons"/>
    </feature>
+   <feature id="com.devepos.adt.callhierarchy">
+      <category name="DevEpos - ADT Add-Ons"/>
+   </feature>
    <category-def name="DevEpos - ADT Add-Ons" label="DevEpos - ADT Add-Ons">
       <description>
          Useful additional plugins for ABAP Development in eclipse
