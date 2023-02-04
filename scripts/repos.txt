@@ -1,6 +1,0 @@
-adt-addons-branding
-adt-addons-base
-adt-plugin-dev-tools
-abap-search-tools-ui
-abap-tags-ui
-abap-code-search-ui
