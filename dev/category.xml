@@ -25,5 +25,4 @@
          Plugins that are useful for developing eclipse plugins based on ADT
       </description>
    </category-def>
-   <repository-reference location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository" enabled="true" />
 </site>

@@ -143,10 +143,5 @@
 			<url>https://tools.hana.ondemand.com/latest</url>
 			<layout>p2</layout>
 		</repository>
-		<repository>
-            <id>Orbit</id>
-            <url>https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository</url>
-            <layout>p2</layout>
-        </repository>
 	</repositories>
 </project>
