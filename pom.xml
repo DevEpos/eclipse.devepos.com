@@ -28,8 +28,8 @@
 		</profile>
 	</profiles>
 	<properties>
-		<tycho-version>2.7.5</tycho-version>
-        <eclipse-version>2022-12</eclipse-version>		
+        <tycho-version>2.7.5</tycho-version>
+        <eclipse-version>2023-03</eclipse-version>
 	</properties>
 	<build>
 		<pluginManagement>
