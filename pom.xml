@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>dev</module>
+		<module>beta</module>
 		<module>latest</module>
 	</modules>
 	<profiles>

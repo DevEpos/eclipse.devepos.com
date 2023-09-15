@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.devepos.adt.searchandanalysistools">
+      <category name="DevEpos - ADT Add-Ons"/>
+   </feature>
+   <feature id="com.devepos.adt.abaptags">
+      <category name="DevEpos - ADT Add-Ons"/>
+   </feature>
+   <feature id="com.devepos.adt.pdt">
+      <category name="DevEpos - ADT Plugin Development"/>
+   </feature>
+   <feature id="com.devepos.adt.codesearch">
+      <category name="DevEpos - ADT Add-Ons"/>
+   </feature>
+   <category-def name="DevEpos - ADT Add-Ons" label="DevEpos - ADT Add-Ons">
+      <description>
+         Useful additional plugins for ABAP Development in eclipse
+      </description>
+   </category-def>
+   <category-def name="DevEpos - ADT Plugin Development" label="DevEpos - ADT Plugin Development">
+      <description>
+         Plugins that are useful for developing eclipse plugins based on ADT
+      </description>
+   </category-def>
+</site>
