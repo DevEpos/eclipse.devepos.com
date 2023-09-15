@@ -31,8 +31,7 @@ $startingDir = Get-Location
 
 # determine full repository paths
 $repoPaths = @()
-$reposDetails = (Get-Content $RepoListPath | ConvertFrom-Json)
-$reposDetails | % { $_.repos | % { $repoPaths += "$RepoBasePath\$_" } }
+$repoPaths = (Get-Content $RepoListPath) | % { "$RepoBasePath\$_"}
 
 # collect repositories whose version actually needs setting
 $versionsToSet = @()

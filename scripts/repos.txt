@@ -1,18 +1,6 @@
-[
-    {
-        "repos": [
-            "adt-addons-base",
-            "adt-addons-branding"
-        ],
-        "parallel": false
-    },
-    {
-        "repos": [
-            "abap-search-tools-ui",
-            "abap-tags-ui",
-            "abap-code-search-ui",
-            "abap-call-hierarchy-ui"
-        ],
-        "parallel": true
-    }
-]
+core
+features\call-hierarchy
+features\code-search
+features\pdt-tools
+features\search-tools
+features\tags
