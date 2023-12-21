@@ -1,6 +1,8 @@
 core
-features\call-hierarchy
+branding
+# features\call-hierarchy
 features\code-search
 features\pdt-tools
 features\search-tools
 features\tags
+features\search-favorites
