@@ -12,9 +12,7 @@ param(
     # Use to switch to Snapshot version of repository
     [Parameter()]
     [switch]$SnapshotVersions,
-    # If the TestMode is provided, only the commit to the repositories will be done
-    # but no push will occur. The repositories will still exist after the script
-    # has run its course
+    # If the TestMode is provided the actual versions won't be set
     [Parameter()]
     [switch]$TestMode
 )
@@ -31,11 +29,17 @@ $startingDir = Get-Location
 
 # determine full repository paths
 $repoPaths = @()
-$repoPaths = (Get-Content $RepoListPath) | % { "$RepoBasePath\$_"}
+$repoPaths = (Get-Content $RepoListPath) | % { 
+    if ($_.StartsWith("#")) {
+        return;
+    }
+    return "$RepoBasePath\$_" 
+}
 
 # collect repositories whose version actually needs setting
 $versionsToSet = @()
 $repoPaths | % {
+
     Set-Location $_
 
     Write-Host -ForegroundColor Green "Processing Repo $(Split-Path -Leaf $_)"
