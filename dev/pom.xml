@@ -22,6 +22,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<finalName>updatesite-${project.version}</finalName>
+					<addIUTargetRepositoryReferences>true</addIUTargetRepositoryReferences>
 				</configuration>
 			</plugin>
 		</plugins>
