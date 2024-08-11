@@ -1,7 +1,7 @@
 # eclipse.devepos.com
 Serves as a software site for the following eclipse features
 
-- [ABAP Tags](https://github.com/stockbal/abap-tags-ui) 
-- [ABAP Search and Analysis Tools](https://github.com/stockbal/abap-search-tools-ui)
-- [ABAP Code Search](https://github.com/stockbal/abap-code-search-ui) 
-- [ADT Extensions](https://github.com/stockbal/AdtExtensions)
+- [ABAP Tags](https://github.com/DevEpos/eclipse-adt-plugins/tree/main/features/tags) 
+- [ABAP Search and Analysis Tools](https://github.com/DevEpos/eclipse-adt-plugins/tree/main/features/search-tools)
+- [ABAP Code Search](https://github.com/DevEpos/eclipse-adt-plugins/tree/main/features/code-search) 
+- [ADT Extensions](https://github.com/DevEpos/eclipse-adt-plugins/tree/main/features/pdt-tools)
