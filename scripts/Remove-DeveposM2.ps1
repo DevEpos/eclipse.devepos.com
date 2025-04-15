@@ -11,7 +11,7 @@ if (!(Test-Path $m2DeveposFolder)) {
 
 Write-Host "Deleting Directory $m2DeveposFolder"
 
-rm -Force -Recurse -Path $m2DeveposFolder
+Remove-Item -Force -Recurse -Path $m2DeveposFolder
 
 if (!(Test-Path $m2DeveposFolder)) {
     Write-Host -ForegroundColor Green "Directory $m2DeveposFolder deleted"
