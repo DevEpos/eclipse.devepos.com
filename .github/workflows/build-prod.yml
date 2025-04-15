@@ -29,7 +29,7 @@ jobs:
       - name: Set production versions
         shell: pwsh
         run: |
-          .\scripts\Set-Versions.ps1 -RepoBasePath .\feat-plugins -RepoListPath .\scripts\repos.txt
+          .\scripts\Set-Versions.ps1 -RepoBasePath .\feat_plugins -RepoListPath .\scripts\repos.txt
 
       - name: Build plugins/features
         run: |
