@@ -1,0 +1,50 @@
+name: Build Prod Updatesite
+
+on:
+  #push:
+  #  branches: [ "main" ]
+  #pull_request:
+  #  branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Checkout Plugins/features
+        uses: actions/checkout@v4
+        with:
+          repository: DevEpos/eclipse-adt-plugins
+          path: feat_plugins
+
+      - name: Set production versions
+        shell: pwsh
+        run: |
+          .\scripts\Set-Versions.ps1 -RepoBasePath .\feat-plugins -RepoListPath .\scripts\repos.txt
+
+      - name: Build plugins/features
+        run: |
+          cd ./feat_plugins
+          mvn -B install -DskipTests
+
+      - name: Build update site
+        run: |
+          cd ./latest
+          mvn -B install
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: build prod update site"
+          branch: "build-prod-update-site"
+          title: "Prod Update site Build"
+          add-paths: latest/**
