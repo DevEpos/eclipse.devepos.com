@@ -26,6 +26,11 @@ jobs:
           repository: DevEpos/eclipse-adt-plugins
           path: feat_plugins
 
+      - name: Remove cached DevEpos artifacts
+        shell: pwsh
+        run: |
+          .\scripts\Remove-DeveposM2.ps1          
+
       - name: Build plugins/features
         run: |
           cd ./feat_plugins

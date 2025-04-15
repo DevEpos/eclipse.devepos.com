@@ -31,6 +31,11 @@ jobs:
         run: |
           .\scripts\Set-Versions.ps1 -RepoBasePath .\feat_plugins -RepoListPath .\scripts\repos.txt
 
+      - name: Remove cached DevEpos artifacts
+        shell: pwsh
+        run: |
+          .\scripts\Remove-DeveposM2.ps1
+
       - name: Build plugins/features
         run: |
           cd ./feat_plugins
