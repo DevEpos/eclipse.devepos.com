@@ -58,6 +58,7 @@ jobs:
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
+          git status --porcelain
           
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
