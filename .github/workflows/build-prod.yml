@@ -70,7 +70,7 @@ jobs:
         if: steps.file_check.outputs.changed == 'true'        
         with:
           commit-message: "chore: build prod update site"
-          branch: "build-prod-update-site"
+          branch: "release/latest"
           title: "Prod Update site Build"
           delete-branch: true
           add-paths: "latest/**"
