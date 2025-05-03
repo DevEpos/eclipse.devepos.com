@@ -47,4 +47,5 @@ jobs:
           commit-message: "chore: build dev update site"
           branch: "build-dev-update-site"
           title: "Dev Update site Build"
+          delete-branch: true
           add-paths: dev/**
