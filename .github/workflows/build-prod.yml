@@ -52,7 +52,11 @@ jobs:
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git fetch
           CHANGES=$(git status --porcelain latest | grep -E '^\s*(A|R)' || true)
-          echo "changed=$(if [ -n ""$CHANGES"" ]; then echo true; else echo false; fi)" >> $GITHUB_OUTPUT
+          if [ -n "$CHANGES" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
           
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
