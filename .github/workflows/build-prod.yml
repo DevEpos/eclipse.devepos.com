@@ -1,10 +1,6 @@
 name: Build Prod Updatesite
 
 on:
-  #push:
-  #  branches: [ "main" ]
-  #pull_request:
-  #  branches: [ "main" ]
   workflow_dispatch:
 env:
   SKIP_GIT_CHANGE_CHECK: ${{ vars.SKIP_GIT_CHANGE_CHECK }}
