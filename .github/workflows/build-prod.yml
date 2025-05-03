@@ -6,6 +6,8 @@ on:
   #pull_request:
   #  branches: [ "main" ]
   workflow_dispatch:
+env:
+  SKIP_GIT_CHANGE_CHECK: ${{ vars.SKIP_GIT_CHANGE_CHECK }}
 
 jobs:
   build:
@@ -53,7 +55,7 @@ jobs:
           git fetch
           git add latest
           CHANGES=$(git status --porcelain latest | grep -E '^\s*(A|R)' || true)
-          if [ -n "$CHANGES" ]; then
+          if [ -n "$CHANGES" ] || [ "$SKIP_GIT_CHANGE_CHECK" == "true" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
