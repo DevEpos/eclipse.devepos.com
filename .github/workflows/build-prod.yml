@@ -46,7 +46,7 @@ jobs:
       - name: Build update site
         run: |
           cd ./latest
-          mvn -B install
+          mvn -B clean install
 
       - name: Check for added or renamed files
         id: file_check
