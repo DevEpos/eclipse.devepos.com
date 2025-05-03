@@ -52,6 +52,7 @@ jobs:
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git fetch
           CHANGES=$(git status --porcelain latest | grep -E '^\s*(A|R)' || true)
+          echo "Detected the following changes: $CHANGES"
           if [ -n "$CHANGES" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
