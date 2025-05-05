@@ -18,6 +18,7 @@ jobs:
         with:
           repository: DevEpos/eclipse.devepos.com
           path: site
+          token: ${{ secrets.DEPLOY_PAT }}
 
       - name: Checkout Plugins/features
         uses: actions/checkout@v4
