@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: DevEpos/eclipse-adt-plugins
+          ref: ${{ inputs.source-branch }}
           path: plugin-build
 
       - name: Remove cached DevEpos artifacts
