@@ -1,0 +1,113 @@
+name: Deployment to BETA Update Site
+on:
+  workflow_call:
+    inputs:
+      source-branch:
+        required: true
+        type: string
+
+jobs:
+  precond-check:
+    name: Check preconditions
+    runs-on: ubuntu-latest
+    if: ${{ vars.CURRENT_BETA_BRANCH == inputs.source-branch && !contains(github.event.head_commit.message, '[skip ci]') }}
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: DevEpos/eclipse-adt-plugins
+          ref: ${{ inputs.source-branch }}
+
+      - name: Check commit message
+        id: check
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "Commit message: $COMMIT_MSG"
+          if echo "$COMMIT_MSG" | grep -iq '\[skip ci\]'; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+  deploy:
+    needs: precond-check
+    name: Build & Deploy
+    if: needs.check-commit.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Update Site Repository
+        uses: actions/checkout@v4
+        with:
+          repository: DevEpos/eclipse.devepos.com
+          path: site
+          token: ${{ secrets.DEPLOY_PAT }}
+
+      - name: Checkout Plugins/features
+        uses: actions/checkout@v4
+        with:
+          repository: DevEpos/eclipse-adt-plugins
+          ref: ${{ inputs.source-branch }}
+          path: plugin-build
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Remove cached DevEpos artifacts
+        shell: pwsh
+        run: |
+          .\site\scripts\Remove-DeveposM2.ps1
+
+      - name: Build plugins/features
+        run: |
+          cd ./plugin-build
+          mvn -B install -DskipTests
+
+      - name: Build update site
+        run: |
+          cd ./site/beta
+          mvn -B clean install
+
+      - name: Configure Git
+        run: |
+          cd ./site
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Build Commit Message
+        id: build-commit-msg
+        run: |
+          cd ./plugin-build
+          # Get branch name from input
+          SOURCE_BRANCH="${{ inputs.source-branch }}"
+
+          # Get latest commit message and body
+          TRIGGER_COMMIT_MSG=$(git log -1 --pretty=%s)
+          TRIGGER_COMMIT_BODY=$(git log -1 --pretty=%b)
+
+          # Build the full commit message in a file
+          {
+            echo "chore(ci): automatic deployment to beta site"
+            echo
+            echo "Deployment triggered from branch ${SOURCE_BRANCH}:"
+            echo
+            echo "Commit:"
+            echo
+            echo "${TRIGGER_COMMIT_MSG}"
+            echo "${TRIGGER_COMMIT_BODY}"
+          } > ../commit-msg.txt
+
+      - name: Commit changes
+        run: |
+          cd ./site
+          git add beta
+          git commit -F ../commit-msg.txt || echo "No Changes to commit"
+
+      - name: Deploy changes
+        run: |
+          cd ./site
+          git push
