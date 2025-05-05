@@ -89,6 +89,10 @@ jobs:
           # Get latest commit message and body
           TRIGGER_COMMIT_MSG=$(git log -1 --pretty=%s)
           TRIGGER_COMMIT_BODY=$(git log -1 --pretty=%b)
+          TRIGGER_COMMIT_SHA=$(git log -1 --pretty=%H)
+
+          # Construct GitHub URL to the commit
+          REPO_URL="https://github.com/${{ github.repository }}/commit/${TRIGGER_COMMIT_SHA}"          
 
           # Build the full commit message in a file
           {
@@ -99,7 +103,11 @@ jobs:
             echo "Commit:"
             echo
             echo "${TRIGGER_COMMIT_MSG}"
+            echo
             echo "${TRIGGER_COMMIT_BODY}"
+            echo 
+            echo "Commit SHA: ${TRIGGER_COMMIT_SHA}"
+            echo "${REPO_URL}"
           } > ../commit-msg.txt
 
       - name: Commit changes
