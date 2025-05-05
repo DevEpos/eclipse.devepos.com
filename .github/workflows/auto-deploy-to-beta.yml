@@ -5,12 +5,11 @@ on:
       source-branch:
         required: true
         type: string
-env:
-  BETA_BRANCH: ${{vars.CURRENT_BETA_BRANCH}}
+
 jobs:
   build:
     name: Build & Deploy
-    if: ${{ env.BETA_BRANCH == inputs.source-branch }}
+    if: ${{ vars.CURRENT_BETA_BRANCH == inputs.source-branch }}
     runs-on: ubuntu-latest
 
     steps:
