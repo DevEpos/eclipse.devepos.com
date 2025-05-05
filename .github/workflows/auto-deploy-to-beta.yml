@@ -13,13 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: "17"
-          distribution: "temurin"
-          cache: maven
-
       - name: Checkout Update Site Repository
         uses: actions/checkout@v4
         with:
@@ -32,6 +25,13 @@ jobs:
           repository: DevEpos/eclipse-adt-plugins
           ref: ${{ inputs.source-branch }}
           path: plugin-build
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
 
       - name: Remove cached DevEpos artifacts
         shell: pwsh
