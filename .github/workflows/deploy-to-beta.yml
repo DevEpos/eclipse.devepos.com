@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ vars.CURRENT_BETA_BRANCH == inputs.source-branch && !contains(github.event.head_commit.message, '[skip ci]') }}
     outputs:
-      should_run: ${{ steps.check.outputs.should_run }}
+      success: ${{ steps.check.outputs.should_deploy }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,15 +24,16 @@ jobs:
         run: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
           echo "Commit message: $COMMIT_MSG"
-          if echo "$COMMIT_MSG" | grep -iq '\[skip ci\]'; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          if echo "$COMMIT_MSG" | grep -iq '\[skip deploy\]'; then
+            echo "Deployment will be skipped!"
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
           else
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "should_deploy=false" >> "$GITHUB_OUTPUT"
           fi
   deploy:
     needs: precond-check
     name: Build & Deploy
-    if: needs.check-commit.outputs.should_run == 'true'
+    if: ${{ needs.precond-check.outputs.success == 'true' }}
     runs-on: ubuntu-latest
 
     steps:
