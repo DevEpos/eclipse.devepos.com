@@ -26,9 +26,9 @@ jobs:
           echo "Commit message: $COMMIT_MSG"
           if echo "$COMMIT_MSG" | grep -iq '\[skip deploy\]'; then
             echo "Deployment will be skipped!"
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-          else
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
           fi
   deploy:
     needs: precond-check
